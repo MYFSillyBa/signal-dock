@@ -1,0 +1,15 @@
+.gitignore
+.vscode/**
+docs/**
+test/**
+scripts/**
+web/**
+*.vsix
+package-lock.json
+node_modules/three/**
+node_modules/html-to-image/**
+node_modules/@serialport/bindings-cpp/prebuilds/android-*/**
+node_modules/@serialport/bindings-cpp/prebuilds/darwin-*/**
+node_modules/@serialport/bindings-cpp/prebuilds/linux-*/**
+node_modules/@serialport/bindings-cpp/prebuilds/win32-arm64/**
+node_modules/@serialport/bindings-cpp/prebuilds/win32-ia32/**

@@ -1,0 +1,105 @@
+{
+  "name": "signal-dock",
+  "displayName": "Signal Dock",
+  "description": "Serial and network telemetry, waveforms, analysis and instrument dashboards.",
+  "version": "0.1.5",
+  "publisher": "MYFSillyBa",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MYFSillyBa/signal-dock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MYFSillyBa/signal-dock/issues"
+  },
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "extensionKind": [
+    "ui"
+  ],
+  "main": "./src/extension.cjs",
+  "activationEvents": [
+    "onView:signalDock.home",
+    "onWebviewPanel:signalDock.dashboard"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "The workbench can display imported data. Workspace decoder or widget extensions require a trusted workspace."
+    },
+    "virtualWorkspaces": {
+      "supported": false,
+      "description": "Recording and serial connections use local desktop resources."
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "signalDock.open",
+        "title": "Signal Dock: 打开工作台 / Open Workbench",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "signalDock.demo",
+        "title": "Signal Dock: 运行示例 / Start Demo"
+      },
+      {
+        "command": "signalDock.disconnect",
+        "title": "Signal Dock: 断开连接 / Disconnect"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "signalDock",
+          "title": "Signal Dock",
+          "icon": "assets/pulse.svg"
+        }
+      ]
+    },
+    "views": {
+      "signalDock": [
+        {
+          "id": "signalDock.home",
+          "name": "Signal Dock"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "signalDock.home",
+        "contents": "连接设备、记录数据，实时观察波形与姿态。\n[打开工作台](command:signalDock.open)\n[运行 Demo](command:signalDock.demo)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "signalDock.open",
+        "key": "ctrl+alt+shift+v",
+        "mac": "cmd+alt+shift+v"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "test": "node --test",
+    "vscode:prepublish": "npm run build",
+    "package": "vsce package --target win32-x64 --out signal-dock-win32-x64.vsix"
+  },
+  "dependencies": {
+    "csv-parse": "^6.2.1",
+    "html-to-image": "^1.11.13",
+    "iconv-lite": "^0.7.2",
+    "serialport": "^13.0.0",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^4.1.0",
+    "esbuild": "^0.28.0",
+    "playwright-core": "^1.65.0"
+  }
+}
