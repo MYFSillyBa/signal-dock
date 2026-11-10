@@ -46,6 +46,14 @@ npm run package
 
 遇到问题欢迎开 Issue。如果方便，带上连接类型、协议、串口参数和一小段能复现的输入，排查起来会快很多。 [提交 Issue](https://github.com/MYFSillyBa/signal-dock/issues)
 
-## 许可证与参考
+## 参考与致谢
 
-Signal Dock 使用 [MIT 许可证](LICENSE)。协议参考 [VOFA+ 文档](https://www.vofa.plus/docs/learning/)，工作区和数据流设计参考 [Lissio](https://codeberg.org/lissio-industries/Lissio)。
+- **VOFA+** 提供了协议兼容和日常调试的参考。Signal Dock 按公开文档实现 JustFloat 和 FireWater，保留 RawData 查看原始字节的用法。波形图的单轴缩放、游标读数、通道绑定，以及用 Δt 设置时间轴，也参考了 VOFA+ 的操作习惯。 [协议引擎文档](https://www.vofa.plus/docs/learning/dataengines/introduce/) · [波形图文档](https://www.vofa.plus/docs/learning/widgets/wave/)
+- **Lissio** 提供了工作区布局和数据流组织的参考。Signal Dock 借鉴了把连接、协议解码和显示分层的思路，以及侧栏配合多标签仪表画布的布局。在 VS Code 里，扩展宿主负责收发和解码，Webview 负责绘制和交互。 [Lissio 仓库](https://codeberg.org/Horldsence/Lissio)
+- **VOFA-NEXT** 是 Lissio 的早期项目名。早期 README 记录了把串口连接、协议选择、波形、原始数据和 3D 视图放在同一调试工作区的设计，这也是这里参考的工作流程。原 GitHub 地址目前返回 404，早期说明可在公开分叉中查看。 [原 GitHub 地址](https://github.com/Horldsence/vofa-NEXT) · [早期 README](https://github.com/sigerio/vofa-NEXT/blob/9ea4393f9745e82e9459cfd37dcf5530e8d4ab3d/README.md)
+
+Signal Dock 的协议解析、图表和控件代码独立编写。感谢这些项目公开协议文档和设计思路。
+
+## 许可证
+
+Signal Dock 使用 [MIT 许可证](LICENSE)。
